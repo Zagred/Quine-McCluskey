@@ -30,17 +30,14 @@ class Program
             }
         }
         catch { }
-
-        List<int> minterms = new List<int>(mt);
-        minterms.AddRange(dc);
-        minterms.Sort();
-
-        int size = Convert.ToString(minterms[minterms.Count - 1], 2).Length - 2;
+        mt.AddRange(dc);
+        mt.Sort();
+        int size = Convert.ToString(mt[mt.Count - 1], 2).Length - 2;
 
         Dictionary<int, List<string>> groups = new Dictionary<int, List<string>>();
         HashSet<string> all_pi = new HashSet<string>();
         //Primary grouping starts
-        foreach (int i in minterms)
+        foreach (int i in mt)
         {
             try
             {

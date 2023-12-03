@@ -118,47 +118,23 @@ namespace Quine_McCluskey
         }
         public string FindVariables(string x)// Function to find variables in a meanterm. For example, the minterm --01 has C' and D as variables
         {
-            string variables = null;
+
+            StringBuilder variableBuilder = new StringBuilder();
+
             for (int i = 0; i < x.Length; i++)
             {
-                if (x[i] == '0')
+                char variable = (char)('A' + i);
+                if (x[i] == '1')
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            variables += "A'";
-                            break;
-                        case 1:
-                            variables += "B'";
-                            break;
-                        case 2:
-                            variables += "C'";
-                            break;
-                        case 3:
-                            variables += "D'";
-                            break;
-                    }
+                    variableBuilder.Append(variable);
                 }
-                else if (x[i] == '1')
+                else if (x[i] == '0')
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            variables += 'A';
-                            break;
-                        case 1:
-                            variables += 'B';
-                            break;
-                        case 2:
-                            variables += 'C';
-                            break;
-                        case 3:
-                            variables += 'D';
-                            break;
-                    }
+                    variableBuilder.Append($"{variable}'");
                 }
             }
-            return variables;
+
+            return variableBuilder.ToString();
         }
     }
 }
